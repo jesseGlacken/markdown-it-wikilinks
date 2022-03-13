@@ -10,6 +10,7 @@ module.exports = (options) => {
     baseURL: '/',
     relativeBaseURL: './',
     makeAllLinksAbsolute: false,
+    regex:  /\[\[([^|\]\n]+)(\|([^\]\n]+))?\]\]/,
     uriSuffix: '.html',
     htmlAttributes: {
     },
@@ -39,7 +40,7 @@ module.exports = (options) => {
   }
 
   return Plugin(
-    /\[\[([^|\]\n]+)(\|([^\]\n]+))?\]\]/,
+   options.regex,
     (match, utils) => {
       let label = ''
       let pageName = ''
